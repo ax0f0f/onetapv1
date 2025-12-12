@@ -15,16 +15,16 @@ module.exports = {
     };
 
     if (!args[0]) {
-      return sendReply('<:traverser:1400313375547850877> Please mention a user to blacklist.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Please mention a user to blacklist.');
     }
 
     const userToAdd = message.mentions.users.first();
     if (!userToAdd) {
-      return sendReply('<:traverser:1400313375547850877> Invalid user.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Invalid user.');
     }
 
     if (userToAdd.id === message.author.id) {
-      return sendReply('<:traverser:1400313375547850877> You cannot blacklist yourself.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You cannot blacklist yourself.');
     }
 
     const ownerId = message.author.id;
@@ -36,12 +36,12 @@ module.exports = {
       [ownerId, blacklistedId, guildId],
       (err, whitelistRow) => {
         if (err) {
-          console.error('<:traverser:1400313375547850877> Database error:', err);
-          return sendReply('<:traverser:1400313375547850877> Database error occurred.');
+          console.error('<:discotoolsxyzicon:1448758684535488562> Database error:', err);
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> Database error occurred.');
         }
 
         if (whitelistRow) {
-          return sendReply('<:traverser:1400313375547850877> This user is whitelisted. Remove them from whitelist before blacklisting.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> This user is whitelisted. Remove them from whitelist before blacklisting.');
         }
 
         db.get(
@@ -49,12 +49,12 @@ module.exports = {
           [ownerId, blacklistedId, guildId],
           (err2, blacklistRow) => {
             if (err2) {
-              console.error('<:traverser:1400313375547850877> Database error:', err2);
-              return sendReply('<:traverser:1400313375547850877> Database error occurred.');
+              console.error('<:discotoolsxyzicon:1448758684535488562> Database error:', err2);
+              return sendReply('<:discotoolsxyzicon:1448758684535488562> Database error occurred.');
             }
 
             if (blacklistRow) {
-              return sendReply('<:traverser:1400313375547850877> This user is already blacklisted by you.');
+              return sendReply('<:discotoolsxyzicon:1448758684535488562> This user is already blacklisted by you.');
             }
 
             db.run(
@@ -62,11 +62,11 @@ module.exports = {
               [ownerId, blacklistedId, guildId],
               (err3) => {
                 if (err3) {
-                  console.error('<:traverser:1400313375547850877> Database error:', err3);
-                  return sendReply('<:traverser:1400313375547850877> Database error occurred while adding to blacklist.');
+                  console.error('<:discotoolsxyzicon:1448758684535488562> Database error:', err3);
+                  return sendReply('<:discotoolsxyzicon:1448758684535488562> Database error occurred while adding to blacklist.');
                 }
 
-                sendReply(`<:verifier:1400313376521064551> Successfully blacklisted ${userToAdd.tag}.`);
+                sendReply(`<:discotoolsxyzicon1:1448758665963110603> Successfully blacklisted ${userToAdd.tag}.`);
               }
             );
           }
