@@ -58,7 +58,7 @@ module.exports = {
     if (!auth.authorized) {
       return interaction.reply({
         ephemeral: true,
-        embeds: [createEmbed('<:traverser:1400313375547850877> Only the voice channel owner or their managers can use this menu.')],
+        embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> Only the voice channel owner or their managers can use this menu.')],
       });
     }
 
@@ -70,46 +70,46 @@ module.exports = {
           await channel.permissionOverwrites.edit(channel.guild.roles.everyone, {
             [PermissionsBitField.Flags.UseSoundboard]: true,
           });
-          response = '<:arcadiasbon:1384183874405273681> Soundboard enabled in this channel.';
+          response = '<:arcadiasbon:1448781948196753609> Soundboard enabled in this channel.';
           break;
 
         case 'soundboard_off':
           await channel.permissionOverwrites.edit(channel.guild.roles.everyone, {
             [PermissionsBitField.Flags.UseSoundboard]: false,
           });
-          response = '<:arcadiasboff:1384185071304445963> Soundboard disabled in this channel.';
+          response = '<:arcadiasboff:1448781989846188106> Soundboard disabled in this channel.';
           break;
 
         case 'camera_on':
           await channel.permissionOverwrites.edit(channel.guild.roles.everyone, {
             [PermissionsBitField.Flags.Stream]: true,
           });
-          response = '<:arcadiacamon:1384185720293560451> Camera (stream) enabled in this channel.';
+          response = '<:arcadiacamon:1448782034796544150> Camera (stream) enabled in this channel.';
           break;
 
         case 'camera_off':
           await channel.permissionOverwrites.edit(channel.guild.roles.everyone, {
             [PermissionsBitField.Flags.Stream]: false,
           });
-          response = '<:arcadiacamoff:1384186030592102461> Camera (stream) disabled in this channel.';
+          response = '<:arcadiacamoff:1448782170775621681> Camera (stream) disabled in this channel.';
           break;
 
         case 'activities_on':
           await channel.permissionOverwrites.edit(channel.guild.roles.everyone, {
             [PermissionsBitField.Flags.UseExternalApps]: true,
           });
-          response = '<:acradiaacton:1384186660731883570> Activities enabled in this channel.';
+          response = '<:acradiaacton:1448782206138056796> Activities enabled in this channel.';
           break;
 
         case 'activities_off':
           await channel.permissionOverwrites.edit(channel.guild.roles.everyone, {
             [PermissionsBitField.Flags.UseExternalApps]: false,
           });
-          response = '<:arcadiaactoff:1384186982443384842> Activities disabled in this channel.';
+          response = '<:arcadiaactoff:1448782244289445989> Activities disabled in this channel.';
           break;
 
         default:
-          response = '<:traverser:1400313375547850877> Unknown selection.';
+          response = '<:discotoolsxyzicon:1448758684535488562> Unknown selection.';
       }
 
       await interaction.reply({
@@ -118,10 +118,10 @@ module.exports = {
       });
 
     } catch (err) {
-      console.error('<:traverser:1400313375547850877> Feature menu error:', err);
+      console.error('<:discotoolsxyzicon:1448758684535488562> Feature menu error:', err);
       await interaction.reply({
         ephemeral: true,
-        embeds: [createEmbed('<:traverser:1400313375547850877> Something went wrong while applying the feature.', 0xff0000)],
+        embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> Something went wrong while applying the feature.', 0xff0000)],
       });
     }
   }
