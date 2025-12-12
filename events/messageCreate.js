@@ -66,7 +66,7 @@ module.exports = {
               console.error(err);
               message.channel.send({
                 embeds: [
-                  new require('discord.js').EmbedBuilder().setDescription("<:traverser:1400313375547850877> Error executing command.").setColor('#f5eee2')
+                  new require('discord.js').EmbedBuilder().setDescription("<:discotoolsxyzicon:1448758684535488562> Error executing command.").setColor('#f5eee2')
                 ]
               });
             }
@@ -100,7 +100,7 @@ module.exports = {
 
             // Suggest the command if a close enough match was found
             if (bestMatch) {
-                const textComponent = new TextDisplayBuilder().setContent(`<:traverser:1400313375547850877>   Did you mean \`${prefix} ${bestMatch.replace('-', ' ')}\`?`);
+                const textComponent = new TextDisplayBuilder().setContent(`<:discotoolsxyzicon:1448758684535488562>   Did you mean \`${prefix} ${bestMatch.replace('-', ' ')}\`?`);
                 const containerComponent = new ContainerBuilder().addTextDisplayComponents(textComponent);
                 message.channel.send({
                     flags: MessageFlags.IsComponentsV2,
