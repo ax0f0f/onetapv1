@@ -1,8 +1,8 @@
-const { TextDisplayBuilder, ContainerBuilder, MessageFlags } = require('discord.js');
+const { PermissionsBitField, TextDisplayBuilder, ContainerBuilder, MessageFlags } = require("discord.js");
 
 module.exports = {
-  name: 'claim',
-  description: 'Claim ownership of a temporary voice channel if the current owner is not present, or force claim if you are Kifo.',
+  name: 'cam-on',
+  description: 'Enable camera permission for everyone in the voice channel.',
   async execute(message, args, client, db) {
     const sendReply = (content) => {
         const textComponent = new TextDisplayBuilder().setContent(content);
@@ -14,58 +14,63 @@ module.exports = {
     };
 
     const userId = message.author.id;
-    const guildId = message.guild.id;
+    const member = message.guild.members.cache.get(userId);
+    const voiceChannel = member?.voice?.channel;
 
-    const voiceChannel = message.member.voice.channel;
     if (!voiceChannel) {
-      return sendReply('<:traverser:1400313375547850877> You must be connected to a voice channel to use this command.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be in a voice channel to use this command.');
     }
 
     db.get(
       `SELECT owner_id FROM temp_channels WHERE channel_id = ? AND guild_id = ?`,
-      [voiceChannel.id, guildId],
+      [voiceChannel.id, message.guild.id],
       (err, row) => {
         if (err) {
           console.error(err);
-          return sendReply('<:traverser:1400313375547850877> Database error occurred.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> Database error occurred.');
         }
 
         if (!row) {
-          return sendReply('<:traverser:1400313375547850877> This voice channel is not managed by the bot.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> This voice channel is not managed by the bot or you are not allowed to modify it.');
         }
 
-        const currentOwnerId = row.owner_id;
+        const channelOwnerId = row.owner_id;
 
-        if (currentOwnerId === userId) {
-          return sendReply('ℹ️ You are already the owner of this voice channel.');
+        if (channelOwnerId === userId) {
+          return enableCamera();
         }
 
-        if (userId !== '335869842748080140') {
-          const guild = message.guild;
-          const currentOwnerMember = guild.members.cache.get(currentOwnerId);
-
-          if (
-            currentOwnerMember &&
-            currentOwnerMember.voice.channel &&
-            currentOwnerMember.voice.channel.id === voiceChannel.id
-          ) {
-            return sendReply('<:traverser:1400313375547850877> The current owner is still connected to this voice channel. You cannot claim it.');
-          }
-        }
-
-        db.run(
-          `UPDATE temp_channels SET owner_id = ? WHERE channel_id = ? AND guild_id = ?`,
-          [userId, voiceChannel.id, guildId],
-          (updateErr) => {
-            if (updateErr) {
-              console.error(updateErr);
-              return sendReply('<:traverser:1400313375547850877> Failed to claim ownership due to a database error.');
+        db.get(
+          `SELECT 1 FROM user_managers WHERE owner_id = ? AND manager_id = ?`,
+          [channelOwnerId, userId],
+          (err2, managerRow) => {
+            if (err2) {
+              console.error(err2);
+              return sendReply('<:discotoolsxyzicon:1448758684535488562> Manager DB error occurred.');
             }
 
-            sendReply('<:verifier:1400313376521064551> You have claimed ownership of this voice channel.');
+            if (managerRow) {
+              return enableCamera();
+            }
+
+            return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be the channel owner or a manager to enable camera.');
           }
         );
+
+        async function enableCamera() {
+          try {
+            await voiceChannel.permissionOverwrites.edit(
+                voiceChannel.guild.roles.everyone,
+                { [PermissionsBitField.Flags.Stream]: true }
+            );
+
+            return sendReply('<:arcadiacamon:1448782034796544150> Enabled **Camera (Use Video)** permission for everyone in this voice channel.');
+          } catch (err) {
+            console.error("Permission edit failed:", err);
+            return sendReply('<:discotoolsxyzicon:1448758684535488562> Failed to update permissions.');
+          }
+        }
       }
     );
-  },
+  }
 };
