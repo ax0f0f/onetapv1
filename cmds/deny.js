@@ -20,7 +20,7 @@ module.exports = {
     const guildId = guild.id;
 
     if (!args[0]) {
-      return sendReply('<:traverser:1400313375547850877> Please provide a user or role mention or ID to deny access.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Please provide a user or role mention or ID to deny access.');
     }
 
     const inputId = args[0].replace(/[<@!&#>]/g, '');
@@ -28,18 +28,18 @@ module.exports = {
     const targetRole = guild.roles.cache.get(inputId);
 
     if (!targetMember && !targetRole) {
-      return sendReply('<:traverser:1400313375547850877> Target user or role not found in this server.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Target user or role not found in this server.');
     }
 
     if (targetMember?.id === '335869842748080140') {
-      return sendReply('<:traverser:1400313375547850877> You can’t deny the developer.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You can’t deny the developer.');
     }
 
     const member = guild.members.cache.get(userId);
     const voiceChannel = member?.voice.channel;
 
     if (!voiceChannel) {
-      return sendReply('<:traverser:1400313375547850877> You must be connected to a voice channel to use this command.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be connected to a voice channel to use this command.');
     }
 
     try {
@@ -52,7 +52,7 @@ module.exports = {
       });
 
       if (!tempChannelRow) {
-        return sendReply('<:traverser:1400313375547850877> This voice channel is not managed by the bot or you are not allowed to deny users here.');
+        return sendReply('<:discotoolsxyzicon:1448758684535488562> This voice channel is not managed by the bot or you are not allowed to deny users here.');
       }
 
       const channelOwnerId = tempChannelRow.owner_id;
@@ -70,20 +70,20 @@ module.exports = {
       const isManager = managers.includes(userId);
 
       if (!isOwner && !isManager) {
-        return sendReply('<:traverser:1400313375547850877> You must be the voice channel owner or a manager to deny users.');
+        return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be the voice channel owner or a manager to deny users.');
       }
 
       if (targetMember) {
         if (targetMember.id === userId) {
-          return sendReply('<:traverser:1400313375547850877> You cannot deny yourself.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> You cannot deny yourself.');
         }
 
         if (!isOwner && targetMember.id === channelOwnerId) {
-          return sendReply('<:traverser:1400313375547850877> Managers cannot deny the channel owner.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> Managers cannot deny the channel owner.');
         }
 
         if (!isOwner && managers.includes(targetMember.id)) {
-          return sendReply('<:traverser:1400313375547850877> Managers cannot deny other managers.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> Managers cannot deny other managers.');
         }
 
         await voiceChannel.permissionOverwrites.edit(targetMember.id, {
@@ -106,7 +106,7 @@ module.exports = {
           }
         }
 
-        return sendReply(`<:verifier:1400313376521064551> Successfully denied access for ${targetMember.user.tag}.`);
+        return sendReply(`<:discotoolsxyzicon1:1448758665963110603> Successfully denied access for ${targetMember.user.tag}.`);
 
       } else if (targetRole) {
         await voiceChannel.permissionOverwrites.edit(targetRole.id, {
@@ -114,12 +114,12 @@ module.exports = {
           Speak: false,
         });
 
-        return sendReply(`<:verifier:1400313376521064551> Successfully denied access for role ${targetRole.name}.`);
+        return sendReply(`<:discotoolsxyzicon1:1448758665963110603> Successfully denied access for role ${targetRole.name}.`);
       }
 
     } catch (error) {
       console.error('Error in deny command:', error);
-      return sendReply('<:traverser:1400313375547850877> Failed to deny permissions due to an error.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Failed to deny permissions due to an error.');
     }
   }
 };
