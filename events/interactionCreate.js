@@ -62,14 +62,14 @@ module.exports = {
       const voiceChannel = interaction.member.voice.channel;
       if (!voiceChannel)
         return interaction.reply({
-          embeds: [createEmbed('<:arcadiafalse:1381422467251306496> You must be in a voice channel.')],
+          embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> You must be in a voice channel.')],
           ephemeral: true,
         });
     
       const { authorized, ownerId, isOwner } = await isAuthorized(voiceChannel.id, interaction.member.id);
       if (!authorized)
         return interaction.reply({
-          embeds: [createEmbed('<:arcadiafalse:1381422467251306496> You are not authorized to lock this channel.')],
+          embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> You are not authorized to lock this channel.')],
           ephemeral: true,
         });
     
@@ -90,13 +90,13 @@ module.exports = {
         }
     
         await interaction.reply({
-          embeds: [createEmbed('<:controledacces:1400312918695874640> Voice channel locked for everyone except authorized users.')],
+          embeds: [createEmbed('<:controledacces:1448781573985009826> Voice channel locked for everyone except authorized users.')],
           ephemeral: true,
         });
       } catch (error) {
         console.error('Lock error:', error);
         await interaction.reply({
-          embeds: [createEmbed('<:arcadiafalse:1381422467251306496> Failed to lock the channel.')],
+          embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> Failed to lock the channel.')],
           ephemeral: true,
         });
       }
@@ -108,14 +108,14 @@ module.exports = {
       const voiceChannel = interaction.member.voice.channel;
       if (!voiceChannel)
         return interaction.reply({
-          embeds: [createEmbed('<:arcadiafalse:1381422467251306496> You must be in a voice channel.')],
+          embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> You must be in a voice channel.')],
           ephemeral: true,
         });
 
       const { authorized } = await isAuthorized(voiceChannel.id, interaction.member.id);
       if (!authorized)
         return interaction.reply({
-          embeds: [createEmbed('<:arcadiafalse:1381422467251306496> You are not authorized to unlock this channel.')],
+          embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> You are not authorized to unlock this channel.')],
           ephemeral: true,
         });
 
@@ -125,13 +125,13 @@ module.exports = {
           Speak: true,
         });
         await interaction.reply({
-          embeds: [createEmbed('<:accesrefuse:1400312914845634653> Voice channel unlocked for everyone.')],
+          embeds: [createEmbed('<:accesrefuse:1448781645833568287> Voice channel unlocked for everyone.')],
           ephemeral: true,
         });
       } catch (error) {
         console.error('Unlock error:', error);
         await interaction.reply({
-          embeds: [createEmbed('<:arcadiafalse:1381422467251306496> Failed to unlock the channel.')],
+          embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> Failed to unlock the channel.')],
           ephemeral: true,
         });
       }
@@ -140,7 +140,7 @@ module.exports = {
       const voiceChannel = interaction.member.voice.channel;
       if (!voiceChannel) {
         return interaction.reply({
-          embeds: [createEmbed('<:arcadiafalse:1381422467251306496> You must be in a voice channel.')],
+          embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> You must be in a voice channel.')],
           ephemeral: true,
         });
       }
@@ -148,7 +148,7 @@ module.exports = {
       const { authorized } = await isAuthorized(voiceChannel.id, interaction.member.id);
       if (!authorized) {
         return interaction.reply({
-          embeds: [createEmbed('<:arcadiafalse:1381422467251306496> You are not authorized to use the trash button.')],
+          embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> You are not authorized to use the trash button.')],
           ephemeral: true,
         });
       }
@@ -169,7 +169,7 @@ module.exports = {
       } catch (error) {
         console.error('Error clearing messages:', error);
         return interaction.editReply({
-          embeds: [createEmbed('<:arcadiafalse:1381422467251306496> Failed to clear messages.')],
+          embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> Failed to clear messages.')],
         });
       }
     }
@@ -179,7 +179,7 @@ module.exports = {
       const voiceChannel = interaction.member.voice.channel;
       if (!voiceChannel)
         return interaction.reply({
-          embeds: [createEmbed('<:arcadiafalse:1381422467251306496> You must be in a voice channel to claim it.')],
+          embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> You must be in a voice channel to claim it.')],
           ephemeral: true,
         });
 
@@ -190,21 +190,21 @@ module.exports = {
           if (err) {
             console.error('DB Error (claim):', err);
             return interaction.reply({
-              embeds: [createEmbed('<:arcadiafalse:1381422467251306496> Database error.')],
+              embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> Database error.')],
               ephemeral: true,
             });
           }
 
           if (!row) {
             return interaction.reply({
-              embeds: [createEmbed('<:arcadiafalse:1381422467251306496> This voice channel is not a temp channel.')],
+              embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> This voice channel is not a temp channel.')],
               ephemeral: true,
             });
           }
 
           if (row.owner_id === interaction.member.id) {
             return interaction.reply({
-              embeds: [createEmbed('<:arcadiafalse:1381422467251306496> You are already the owner of this voice channel.')],
+              embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> You are already the owner of this voice channel.')],
               ephemeral: true,
             });
           }
@@ -212,7 +212,7 @@ module.exports = {
           const ownerMember = interaction.guild.members.cache.get(row.owner_id);
           if (ownerMember && ownerMember.voice.channelId === voiceChannel.id) {
             return interaction.reply({
-              embeds: [createEmbed(`<:arcadiafalse:1381422467251306496> The current owner <@${row.owner_id}> is still connected to this channel.`)],
+              embeds: [createEmbed(`<:discotoolsxyzicon:1448758684535488562> The current owner <@${row.owner_id}> is still connected to this channel.`)],
               ephemeral: true,
             });
           }
@@ -224,13 +224,13 @@ module.exports = {
               if (updateErr) {
                 console.error('DB Error (update owner):', updateErr);
                 return interaction.reply({
-                  embeds: [createEmbed('<:arcadiafalse:1381422467251306496> Failed to claim ownership.')],
+                  embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> Failed to claim ownership.')],
                   ephemeral: true,
                 });
               }
 
               interaction.reply({
-                embeds: [createEmbed(`<:arcadiatrue:1381421969055944707> You have claimed ownership of the voice channel **${voiceChannel.name}**.`)],
+                embeds: [createEmbed(`<:discotoolsxyzicon1:1448758665963110603> You have claimed ownership of the voice channel **${voiceChannel.name}**.`)],
                 ephemeral: true,
               });
             }
@@ -243,14 +243,14 @@ module.exports = {
       const voiceChannel = interaction.member.voice.channel;
       if (!voiceChannel)
         return interaction.reply({
-          embeds: [createEmbed('<:arcadiafalse:1381422467251306496> You must be in a voice channel.')],
+          embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> You must be in a voice channel.')],
           ephemeral: true,
         });
     
       const { authorized } = await isAuthorized(voiceChannel.id, interaction.member.id);
       if (!authorized)
         return interaction.reply({
-          embeds: [createEmbed('<:arcadiafalse:1381422467251306496> You are not authorized to use this modal.')],
+          embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> You are not authorized to use this modal.')],
           ephemeral: true,
         });
     
@@ -299,14 +299,14 @@ module.exports = {
       const voiceChannel = interaction.member.voice.channel;
       if (!voiceChannel)
         return interaction.reply({
-          embeds: [createEmbed('<:arcadiafalse:1381422467251306496> You must be in a voice channel.')],
+          embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> You must be in a voice channel.')],
           ephemeral: true,
         });
     
       const { authorized, ownerId, isOwner } = await isAuthorized(voiceChannel.id, interaction.member.id);
       if (!authorized)
         return interaction.reply({
-          embeds: [createEmbed('<:arcadiafalse:1381422467251306496> You are not authorized to use this modal.')],
+          embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> You are not authorized to use this modal.')],
           ephemeral: true,
         });
     
@@ -316,7 +316,7 @@ module.exports = {
     
         if (!/^\d{17,19}$/.test(targetUserId)) {
           return interaction.reply({
-            embeds: [createEmbed('<:arcadiafalse:1381422467251306496> Please enter a valid user ID or mention.')],
+            embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> Please enter a valid user ID or mention.')],
             ephemeral: true,
           });
         }
@@ -324,7 +324,7 @@ module.exports = {
         const targetMember = interaction.guild.members.cache.get(targetUserId);
         if (!targetMember) {
           return interaction.reply({
-            embeds: [createEmbed('<:arcadiafalse:1381422467251306496> User not found in this guild.')],
+            embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> User not found in this guild.')],
             ephemeral: true,
           });
         }
@@ -337,13 +337,13 @@ module.exports = {
               ViewChannel: true,
             });
             return interaction.reply({
-              embeds: [createEmbed(`<:arcadiatrue:1381421969055944707> Permitted <@${targetUserId}> to connect and speak in your voice channel.`)],
+              embeds: [createEmbed(`<:discotoolsxyzicon1:1448758665963110603> Permitted <@${targetUserId}> to connect and speak in your voice channel.`)],
               ephemeral: true,
             });
           } catch (e) {
             console.error('Permit error:', e);
             return interaction.reply({
-              embeds: [createEmbed('<:arcadiafalse:1381422467251306496> Failed to permit this user.')],
+              embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> Failed to permit this user.')],
               ephemeral: true,
             });
           }
@@ -352,7 +352,7 @@ module.exports = {
         if (interaction.customId === 'deny_modal') {
           if (targetUserId === ownerId && !isOwner) {
             return interaction.reply({
-              embeds: [createEmbed('<:arcadiafalse:1381422467251306496> Managers cannot deny the owner.')],
+              embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> Managers cannot deny the owner.')],
               ephemeral: true,
             });
           }
@@ -370,7 +370,7 @@ module.exports = {
           } catch (e) {
             console.error('Deny error:', e);
             return interaction.reply({
-              embeds: [createEmbed('<:arcadiafalse:1381422467251306496> Failed to deny this user.')],
+              embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> Failed to deny this user.')],
               ephemeral: true,
             });
           }
@@ -382,7 +382,7 @@ module.exports = {
         const limit = parseInt(limitInput, 10);
         if (isNaN(limit) || limit < 0 || limit > 99) {
           return interaction.reply({
-            embeds: [createEmbed('<:arcadiafalse:1381422467251306496> Please enter a valid number between 0 and 99.')],
+            embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> Please enter a valid number between 0 and 99.')],
             ephemeral: true,
           });
         }
@@ -390,25 +390,25 @@ module.exports = {
         try {
           await voiceChannel.setUserLimit(limit);
           return interaction.reply({
-            embeds: [createEmbed(`<:arcadiatrue:1381421969055944707> Set voice channel user limit to ${limit}.`)],
+            embeds: [createEmbed(`<:discotoolsxyzicon1:1448758665963110603> Set voice channel user limit to ${limit}.`)],
             ephemeral: true,
           });
         } catch (e) {
           console.error('SetVoiceLimit error:', e);
           return interaction.reply({
-            embeds: [createEmbed('<:arcadiafalse:1381422467251306496> Failed to set voice channel user limit.')],
+            embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> Failed to set voice channel user limit.')],
             ephemeral: true,
           });
         }
       }
       
-      // <:arcadiatrue:1381421969055944707> NEW block: rename voice channel
+      // <:discotoolsxyzicon1:1448758665963110603> NEW block: rename voice channel
       if (interaction.customId === 'name_modal') {
         const newName = interaction.fields.getTextInputValue('voice_name').trim();
 
         if (!newName || newName.length > 100) {
           return interaction.reply({
-            embeds: [createEmbed('<:arcadiafalse:1381422467251306496> Invalid channel name. Must be between 1 and 100 characters.')],
+            embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> Invalid channel name. Must be between 1 and 100 characters.')],
             ephemeral: true,
           });
         }
@@ -416,13 +416,13 @@ module.exports = {
         try {
           await voiceChannel.setName(newName);
           return interaction.reply({
-            embeds: [createEmbed(`<:arcadiatrue:1381421969055944707> Channel name changed to **${newName}**.`)],
+            embeds: [createEmbed(`<:discotoolsxyzicon1:1448758665963110603> Channel name changed to **${newName}**.`)],
             ephemeral: true,
           });
         } catch (error) {
           console.error('Error renaming channel:', error);
           return interaction.reply({
-            embeds: [createEmbed('<:arcadiafalse:1381422467251306496> Failed to rename the voice channel.')],
+            embeds: [createEmbed('<:discotoolsxyzicon:1448758684535488562> Failed to rename the voice channel.')],
             ephemeral: true,
           });
         }
