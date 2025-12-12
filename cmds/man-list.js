@@ -21,17 +21,17 @@ module.exports = {
     `, (err) => {
       if (err) {
         console.error(err);
-        return sendReply('<:arcadiafalse:1381422467251306496> Database error occurred.');
+        return sendReply('<:discotoolsxyzicon:1448758684535488562> Database error occurred.');
       }
 
       db.all(`SELECT manager_id FROM user_managers WHERE owner_id = ?`, [message.author.id], async (err, rows) => {
         if (err) {
           console.error(err);
-          return sendReply('<:arcadiafalse:1381422467251306496> Failed to fetch your manager list from the database.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> Failed to fetch your manager list from the database.');
         }
 
         if (!rows.length) {
-          return sendReply('ℹ️ You have no managers set yet.');
+          return sendReply('<:infoo:1448793556394442793> You have no managers set yet.');
         }
 
         const managers = rows.map(r => {
