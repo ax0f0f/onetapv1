@@ -66,16 +66,16 @@ module.exports = {
           );
         });
 
-        if (!interaction.replied) await interaction.reply({ content: `✅ Task accepted and recorded for <@${taskerId}>.`, ephemeral: true });
+        if (!interaction.replied) await interaction.reply({ content: `<:discotoolsxyzicon1:1448758665963110603> Task accepted and recorded for <@${taskerId}>.`, ephemeral: true });
       } else if (customId === 'task_deny') {
-        if (!interaction.replied) await interaction.reply({ content: '❌ Task denied, no changes made.', ephemeral: true });
+        if (!interaction.replied) await interaction.reply({ content: '<:discotoolsxyzicon:1448758684535488562> Task denied, no changes made.', ephemeral: true });
       }
 
       await interaction.message.edit({ components: [] });
     } catch (error) {
       console.error('Error processing button interaction:', error);
       if (!interaction.replied) {
-        await interaction.reply({ content: '❌ There was an error processing this interaction.', ephemeral: true });
+        await interaction.reply({ content: '<:discotoolsxyzicon:1448758684535488562> There was an error processing this interaction.', ephemeral: true });
       }
     }
   }
