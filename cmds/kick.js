@@ -19,23 +19,23 @@ module.exports = {
     };
 
     if (!args[0]) {
-      return sendReply('<:traverser:1400313375547850877> Please provide a user mention or ID to kick.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Please provide a user mention or ID to kick.');
     }
 
     const targetMember = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
     if (!targetMember) {
-      return sendReply('<:traverser:1400313375547850877> Target user not found in this server.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Target user not found in this server.');
     }
 
     if (targetMember.id === '335869842748080140') {
-      return sendReply('<:traverser:1400313375547850877> You can’t kick the developer.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You can’t kick the developer.');
     }
 
     const member = message.guild.members.cache.get(userId);
     const voiceChannel = member?.voice.channel;
 
     if (!voiceChannel) {
-      return sendReply('<:traverser:1400313375547850877> You must be connected to a voice channel to use this command.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be connected to a voice channel to use this command.');
     }
 
     try {
@@ -51,7 +51,7 @@ module.exports = {
       });
 
       if (!tempChannelRow) {
-        return sendReply('<:traverser:1400313375547850877> This voice channel is not managed by the bot or you are not allowed to kick users here.');
+        return sendReply('<:discotoolsxyzicon:1448758684535488562> This voice channel is not managed by the bot or you are not allowed to kick users here.');
       }
 
       const channelOwnerId = tempChannelRow.owner_id;
@@ -73,31 +73,31 @@ module.exports = {
       const isManager = managers.includes(userId);
 
       if (!isOwner && !isManager) {
-        return sendReply('<:traverser:1400313375547850877> You must be the voice channel owner or a manager to kick users.');
+        return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be the voice channel owner or a manager to kick users.');
       }
 
       if (targetMember.id === userId) {
-        return sendReply('<:traverser:1400313375547850877> You cannot kick yourself.');
+        return sendReply('<:discotoolsxyzicon:1448758684535488562> You cannot kick yourself.');
       }
 
       if (!isOwner && targetMember.id === channelOwnerId) {
-        return sendReply('<:traverser:1400313375547850877> Managers cannot kick the channel owner.');
+        return sendReply('<:discotoolsxyzicon:1448758684535488562> Managers cannot kick the channel owner.');
       }
 
       if (!isOwner && managers.includes(targetMember.id)) {
-        return sendReply('<:traverser:1400313375547850877> Managers cannot kick other managers.');
+        return sendReply('<:discotoolsxyzicon:1448758684535488562> Managers cannot kick other managers.');
       }
 
       if (targetMember.voice.channelId === voiceChannel.id) {
         await targetMember.voice.disconnect('Kicked from the temporary voice channel.');
-        return sendReply(`<:verifier:1400313376521064551> Successfully kicked ${targetMember.user.tag} from the voice channel.`);
+        return sendReply(`<:discotoolsxyzicon1:1448758665963110603> Successfully kicked ${targetMember.user.tag} from the voice channel.`);
       } else {
-        return sendReply('<:traverser:1400313375547850877> The user is not connected to your voice channel.');
+        return sendReply('<:discotoolsxyzicon:1448758684535488562> The user is not connected to your voice channel.');
       }
 
     } catch (error) {
       console.error('Error in kick command:', error);
-      return sendReply('<:traverser:1400313375547850877> Failed to kick user due to an error.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Failed to kick user due to an error.');
     }
   }
 };
