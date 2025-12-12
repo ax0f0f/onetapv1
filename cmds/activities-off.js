@@ -18,7 +18,7 @@ module.exports = {
     };
 
     if (!voiceChannel) {
-      return sendReply('<:traverser:1400313375547850877> You must be in a voice channel to use this command.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be in a voice channel to use this command.');
     }
 
     db.get(
@@ -27,11 +27,11 @@ module.exports = {
       (err, row) => {
         if (err) {
           console.error(err);
-          return sendReply('<:traverser:1400313375547850877> Database error occurred.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> Database error occurred.');
         }
 
         if (!row) {
-          return sendReply('<:traverser:1400313375547850877> This voice channel is not managed by the bot or you are not allowed to modify it.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> This voice channel is not managed by the bot or you are not allowed to modify it.');
         }
 
         const channelOwnerId = row.owner_id;
@@ -46,14 +46,14 @@ module.exports = {
           (err2, managerRow) => {
             if (err2) {
               console.error(err2);
-              return sendReply('<:traverser:1400313375547850877> Manager DB error occurred.');
+              return sendReply('<:discotoolsxyzicon:1448758684535488562> Manager DB error occurred.');
             }
 
             if (managerRow) {
               return disableActivities();
             }
 
-            return sendReply('<:traverser:1400313375547850877> You must be the channel owner or a manager to disable activities.');
+            return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be the channel owner or a manager to disable activities.');
           }
         );
 
@@ -65,10 +65,10 @@ module.exports = {
 
             );
 
-            return sendReply('<:arcadiaactoff:1384186982443384842> Activities permission disabled for everyone in this voice channel.');
+            return sendReply('<:arcadiaactoff:1448782244289445989> Activities permission disabled for everyone in this voice channel.');
           } catch (err) {
             console.error("Permission edit failed:", err);
-            return sendReply('<:traverser:1400313375547850877> Failed to update permissions.');
+            return sendReply('<:discotoolsxyzicon:1448758684535488562> Failed to update permissions.');
           }
         }
       }
