@@ -18,7 +18,7 @@ module.exports = {
 
     const user = message.mentions.users.first();
     if (!user) {
-      return sendReply('<:traverser:1400313375547850877> Please mention a user to remove from your whitelist.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Please mention a user to remove from your whitelist.');
     }
 
     db.get(
@@ -26,11 +26,11 @@ module.exports = {
       [ownerId, user.id, guildId],
       (err, row) => {
         if (err) {
-          return sendReply('<:traverser:1400313375547850877> Database error.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> Database error.');
         }
 
         if (!row) {
-          return sendReply(`⚠️ <@${user.id}> is not in your whitelist.`);
+          return sendReply(`<:warn1:1448792086810726601> <@${user.id}> is not in your whitelist.`);
         }
 
         db.run(
@@ -38,10 +38,10 @@ module.exports = {
           [ownerId, user.id, guildId],
           (err) => {
             if (err) {
-              return sendReply('<:traverser:1400313375547850877> Failed to remove whitelist.');
+              return sendReply('<:discotoolsxyzicon:1448758684535488562> Failed to remove whitelist.');
             }
 
-            sendReply(`<:verifier:1400313376521064551> You have removed <@${user.id}> from your whitelist.`);
+            sendReply(`<:discotoolsxyzicon1:1448758665963110603> You have removed <@${user.id}> from your whitelist.`);
           }
         );
       }
