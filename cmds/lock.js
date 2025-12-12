@@ -22,7 +22,7 @@ module.exports = {
     const voiceChannel = member?.voice.channel;
 
     if (!voiceChannel) {
-      return sendReply('<:traverser:1400313375547850877> You must be connected to a voice channel to use this command.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be connected to a voice channel to use this command.');
     }
 
     try {
@@ -38,7 +38,7 @@ module.exports = {
       });
 
       if (!tempChannelRow) {
-        return sendReply('<:traverser:1400313375547850877> This voice channel is not managed by the bot or you are not allowed to lock it.');
+        return sendReply('<:discotoolsxyzicon:1448758684535488562> This voice channel is not managed by the bot or you are not allowed to lock it.');
       }
 
       const channelOwnerId = tempChannelRow.owner_id;
@@ -60,7 +60,7 @@ module.exports = {
       const isManager = managers.includes(userId);
 
       if (!isOwner && !isManager) {
-        return sendReply('<:traverser:1400313375547850877> You must be the voice channel owner or a manager to lock this channel.');
+        return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be the voice channel owner or a manager to lock this channel.');
       }
 
       await voiceChannel.permissionOverwrites.edit(guild.roles.everyone, { Connect: false });
@@ -77,15 +77,15 @@ module.exports = {
         }
       }
 
-      if (!voiceChannel.name.startsWith('🔒')) {
-        await voiceChannel.setName(`🔒 ${voiceChannel.name}`);
+      if (!voiceChannel.name.startsWith('.')) {
+        await voiceChannel.setName(`. ${voiceChannel.name}`);
       }
 
-      return sendReply('<:controledacces:1400312918695874640> Channel has been locked for everyone except the owner and managers currently in the voice channel.');
+      return sendReply('<:controledacces:1448781573985009826> Channel has been locked <:accesrefuse:1448781645833568287> for everyone except the owner and managers currently in the voice channel.');
 
     } catch (error) {
       console.error('Error locking channel:', error);
-      return sendReply('<:traverser:1400313375547850877> Failed to lock the channel. Make sure I have permission to manage channel permissions.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Failed to lock the channel. Make sure I have permission to manage channel permissions.');
     }
   }
 };
