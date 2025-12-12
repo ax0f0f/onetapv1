@@ -158,7 +158,7 @@ module.exports = {
             }
           );
 
-          // ✅ Safe move check
+          // Safe move check
           if (newState.channel) {
             try {
               await newState.setChannel(newVoiceChannel);
@@ -166,7 +166,7 @@ module.exports = {
               console.error('❌ Failed to move user into new voice channel:', err.message);
             }
           } else {
-            console.warn('⚠️ User left before being moved. Deleting temp VC...');
+            console.warn('<:warn1:1448792086810726601> User left before being moved. Deleting temp VC...');
             try {
               await newVoiceChannel.delete('User left before being moved into temp VC.');
               db.run(`DELETE FROM temp_channels WHERE channel_id = ?`, [newVoiceChannel.id], (err) => {
@@ -201,67 +201,65 @@ module.exports = {
           }, 3000);
 
                   const panelContent = [
-                    ` # Control Panel <@${userId}>`,
-                    `> **•  Welcome to the City of Mercy.**
-> **•  We hope you enjoy your stay.**
-> **•  The City of Mercy welcomes you and wishes you all the best.**
-> **•  We are honored by your presence in our city and hope you will be valued guests.**`,
-                    `[Developed by ichbi9o](https://discord.gg/hmm7u4rCrk)`
+                    ` # Control Panel `,
+                    `> **•  <@${userId}> mrhba bik f Tap dylk.**
+> **•  We are honored by your presence in our community and hope you will be valued guests.**`,
+                    `[Developed by ax0f](https://discord.gg/hmm7u4rCrk)`
                   ].join('\n');
 
                   const mentionComponent = new TextDisplayBuilder().setContent(`${newState.guild.name}`);
                   const textComponent = new TextDisplayBuilder().setContent(panelContent);
 
                   const row1 = new ActionRowBuilder().addComponents(
-                    new ButtonBuilder().setCustomId('lock').setEmoji('<:controledacces:1400312918695874640>').setStyle(ButtonStyle.Secondary),
-                    new ButtonBuilder().setCustomId('unlock').setEmoji('<:accesrefuse:1400312914845634653>').setStyle(ButtonStyle.Secondary),
-                    new ButtonBuilder().setCustomId('claim').setEmoji('<:couronne1Copy:1400312921698861076>').setStyle(ButtonStyle.Secondary),
-                    new ButtonBuilder().setCustomId('setVoiceLimit').setEmoji('<:arcadialimit:1381416262483050589>').setStyle(ButtonStyle.Secondary)
+                    new ButtonBuilder().setCustomId('lock').setEmoji('<:controledacces:1448781573985009826>').setStyle(ButtonStyle.Secondary),
+                    new ButtonBuilder().setCustomId('unlock').setEmoji('<:accesrefuse:1448781645833568287>').setStyle(ButtonStyle.Secondary),
+                    new ButtonBuilder().setCustomId('claim').setEmoji('<:couronne1Copy:1448781704000180315>').setStyle(ButtonStyle.Secondary),
+                    new ButtonBuilder().setCustomId('setVoiceLimit').setEmoji('<:arcadialimit:1448781741459505443>').setStyle(ButtonStyle.Secondary)
                   );
                   
                   const row2 = new ActionRowBuilder().addComponents(
-                    new ButtonBuilder().setCustomId('permit').setEmoji('<:ajoutdutilisateur:1400312916263178283>').setStyle(ButtonStyle.Secondary),
-                    new ButtonBuilder().setCustomId('deny').setEmoji('<:supprimerlutilisateur:1400312929156464660>').setStyle(ButtonStyle.Secondary),
+                    new ButtonBuilder().setCustomId('permit').setEmoji('<:ajoutdutilisateur:1448781790444650707>').setStyle(ButtonStyle.Secondary),
+                    new ButtonBuilder().setCustomId('deny').setEmoji('<:supprimerlutilisateur:1448781831074873507>').setStyle(ButtonStyle.Secondary),
                     new ButtonBuilder().setCustomId('trash').setEmoji('<:poubelle:1400312926975295598>').setStyle(ButtonStyle.Secondary),
-                    new ButtonBuilder().setCustomId('name').setEmoji('<:acadiarename:1381416711001079809>').setStyle(ButtonStyle.Secondary)
+                    new ButtonBuilder().setCustomId('name').setEmoji('<:acadiarename:1448781911735402498>').setStyle(ButtonStyle.Secondary)
                   );
                   
                   const row3 = new ActionRowBuilder().addComponents(
                     new StringSelectMenuBuilder()
                       .setCustomId('features_menu')
-                      .setPlaceholder('🔧 Channel Features')
+                      .setPlaceholder('Channel Features')
                       .addOptions(
                         new StringSelectMenuOptionBuilder()
                           .setLabel('sb - ON')
                           .setValue('soundboard_on')
-                          .setEmoji('<:arcadiasbon:1384183874405273681>'),
+                          .setEmoji('<:arcadiasbon:1448781948196753609>'),
                         new StringSelectMenuOptionBuilder()
                           .setLabel('sb - OFF')
                           .setValue('soundboard_off')
-                          .setEmoji('<:arcadiasboff:1384185071304445963>'),
+                          .setEmoji('<:arcadiasboff:1448781989846188106>'),
                         new StringSelectMenuOptionBuilder()
                           .setLabel('Cam - ON')
                           .setValue('camera_on')
-                          .setEmoji('<:arcadiacamon:1384185720293560451>'),
+                          .setEmoji('<:arcadiacamon:1448782034796544150>'),
                         new StringSelectMenuOptionBuilder()
                           .setLabel('Cam - OFF')
                           .setValue('camera_off')
-                          .setEmoji('<:arcadiacamoff:1384186030592102461>'),
+                          .setEmoji('<:arcadiacamoff:1448782170775621681>'),
                         new StringSelectMenuOptionBuilder()
                           .setLabel('Activities - ON')
                           .setValue('activities_on')
-                          .setEmoji('<:acradiaacton:1384186660731883570>'),
+                          .setEmoji('<:acradiaacton:1448782206138056796>'),
                         new StringSelectMenuOptionBuilder()
                           .setLabel('Activities - OFF')
                           .setValue('activities_off')
-                          .setEmoji('<:arcadiaactoff:1384186982443384842>')
+                          .setEmoji('<:arcadiaactoff:1448782244289445989>')
                       )
                   );
 
                   const mediaGallery = new MediaGalleryBuilder()
                     .addItems(
                       mediaGalleryItem => mediaGalleryItem
-                        .setURL('https://cdn.discordapp.com/attachments/1365992242283810870/1401764054959394816/d733b491c5031518eed0e59a49511c9a.gif?ex=68917602&is=68902482&hm=288f604a4761b7f885efa0b8e882157cff67d8cd60d8e2d08884397c6de2e9ad&')
+                        .setURL('https://cdn.discordapp.com/attachments/1400466495833772236/1400469462091698409/30770-nxvaxo.gif?ex=693c17d3&is=693ac653&hm=f91834b5d437ecc9a14862fc4a848d51d9e0bfc7c01ea30816c8484ce013ddaa&')
                     );
 
                   const containerComponent = new ContainerBuilder()
