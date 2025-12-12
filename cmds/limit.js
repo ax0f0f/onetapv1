@@ -22,12 +22,12 @@ module.exports = {
     const voiceChannel = member?.voice.channel;
 
     if (!voiceChannel) {
-      return sendReply('<:traverser:1400313375547850877> You must be connected to a voice channel to use this command.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be connected to a voice channel to use this command.');
     }
 
     const limit = parseInt(args[0], 10);
     if (isNaN(limit) || limit < 0 || limit > 99) {
-      return sendReply('<:traverser:1400313375547850877> Please provide a valid user limit between 0 and 99.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Please provide a valid user limit between 0 and 99.');
     }
 
     try {
@@ -43,7 +43,7 @@ module.exports = {
       });
 
       if (!tempChannelRow) {
-        return sendReply('<:traverser:1400313375547850877> This voice channel is not managed by the bot or you are not allowed to modify it.');
+        return sendReply('<:discotoolsxyzicon:1448758684535488562> This voice channel is not managed by the bot or you are not allowed to modify it.');
       }
 
       const channelOwnerId = tempChannelRow.owner_id;
@@ -65,16 +65,16 @@ module.exports = {
       const isManager = managers.includes(userId);
 
       if (!isOwner && !isManager) {
-        return sendReply('<:traverser:1400313375547850877> You must be the voice channel owner or a manager to set the limit.');
+        return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be the voice channel owner or a manager to set the limit.');
       }
 
       await voiceChannel.setUserLimit(limit);
 
-      return sendReply(`<:verifier:1400313376521064551> User limit set to \`${limit}\` for the voice channel.`);
+      return sendReply(`<:discotoolsxyzicon1:1448758665963110603> User limit set to \`${limit}\` for the voice channel.`);
 
     } catch (error) {
       console.error('Error setting user limit:', error);
-      return sendReply('<:traverser:1400313375547850877> Failed to set the user limit. Make sure I have the correct permissions.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Failed to set the user limit. Make sure I have the correct permissions.');
     }
   }
 };
