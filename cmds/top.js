@@ -23,7 +23,7 @@ module.exports = {
         });
     };
     if (!totoDB || typeof totoDB.all !== 'function') {
-      return sendMessage('<:traverser:1400313375547850877> Database connection is not properly initialized.');
+      return sendMessage('<:discotoolsxyzicon:1448758684535488562> Database connection is not properly initialized.');
     }
 
     try {
@@ -32,7 +32,7 @@ module.exports = {
 
       // Get the guild ID
       const guildId = message.guild?.id;
-      if (!guildId) return sendMessage('<:traverser:1400313375547850877> This command must be used in a server.');
+      if (!guildId) return sendMessage('<:discotoolsxyzicon:1448758684535488562> This command must be used in a server.');
 
       // Query top 10 users by time_for_user in this guild
       const rows = await dbAll(
@@ -41,7 +41,7 @@ module.exports = {
       );
 
       if (!rows || rows.length === 0) {
-        return sendMessage('ℹ️ No voice time data found for this server.');
+        return sendMessage('<:infoo:1448793556394442793> No voice time data found for this server.');
       }
 
       // Format the results into a leaderboard string
@@ -74,7 +74,7 @@ module.exports = {
 
     } catch (error) {
       console.error('Error fetching top users:', error);
-      sendMessage('<:traverser:1400313375547850877> An error occurred while fetching the leaderboard.');
+      sendMessage('<:discotoolsxyzicon:1448758684535488562> An error occurred while fetching the leaderboard.');
     }
   },
 };

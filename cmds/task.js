@@ -19,7 +19,7 @@ module.exports = {
     const voiceChannel = member?.voice.channel;
 
     if (!voiceChannel) {
-      return sendReply('<:traverser:1400313375547850877> You must be in a voice channel to use this command.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be in a voice channel to use this command.');
     }
 
     // Get owner of voice channel
@@ -32,11 +32,11 @@ module.exports = {
     });
 
     if (!tempChannelRow) {
-      return sendReply('<:traverser:1400313375547850877> This voice channel is not managed by the bot.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> This voice channel is not managed by the bot.');
     }
 
     if (tempChannelRow.owner_id !== userId) {
-      return sendReply('<:traverser:1400313375547850877> You must be the voice channel owner to use this command.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be the voice channel owner to use this command.');
     }
 
     // Check if user is admin or has a tasker role
@@ -50,14 +50,14 @@ module.exports = {
     });
 
     if (!taskSettingsRow?.tasklogs) {
-      return sendReply('⚠️ Tasklogs channel is not set. Use `.v set-tasklogs` to configure it.');
+      return sendReply('<:warn1:1448792086810726601> Tasklogs channel is not set. Use `.v set-tasklogs` to configure it.');
     }
 
     const taskerRoleIds = taskSettingsRow.taskers ? taskSettingsRow.taskers.split(',') : [];
     const isTasker = taskerRoleIds.some(roleId => member.roles.cache.has(roleId));
 
     if (!(isAdmin || isTasker)) {
-      return sendReply('<:traverser:1400313375547850877> You need to be an admin or have a tasker role to use this command.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You need to be an admin or have a tasker role to use this command.');
     }
 
     // Collect members in voice channel
@@ -75,7 +75,7 @@ module.exports = {
 
     // Compose embed for tasklogs channel
     const taskReportContent = [
-        `# 🎯 Task Report`,
+        `# <:reportt:1448797160614133940> Task Report`,
         `**Tasker:** <@${userId}>`,
         `**Other Taskers:** ${otherTaskers.size > 0 ? otherTaskers.map(m => `<@${m.id}>`).join(', ') : 'None'}`,
         `**In Voice:** ${remainingMembers.size > 0 ? remainingMembers.map(m => `<@${m.id}>`).join(', ') : 'None'}`,
@@ -102,14 +102,14 @@ module.exports = {
     // Fetch tasklogs channel
     const tasklogsChannel = message.guild.channels.cache.get(taskSettingsRow.tasklogs);
     if (!tasklogsChannel) {
-      return sendReply('⚠️ Tasklogs channel configured does not exist or I cannot access it.');
+      return sendReply('<:warn1:1448792086810726601> Tasklogs channel configured does not exist or I cannot access it.');
     }
 
     try {
       await tasklogsChannel.send({ flags: MessageFlags.IsComponentsV2, components: [containerComponent, buttons] });
 
       // Confirm to command user
-      sendReply('✅ Task successfully sent to tasklogs channel.', true);
+      sendReply('<:discotoolsxyzicon1:1448758665963110603> Task successfully sent to tasklogs channel.', true);
     } catch (error) {
       console.error('Error sending tasklog embed:', error);
       sendReply('⚠️ Failed to send task report to the tasklogs channel.');

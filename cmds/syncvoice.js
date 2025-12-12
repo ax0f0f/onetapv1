@@ -15,26 +15,26 @@ module.exports = {
     };
 
     if (!message.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
-      return sendReply('<:traverser:1400313375547850877> You do not have permission to use this command.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You do not have permission to use this command.');
     }
 
     const guildId = message.guild.id;
 
     if (!args[0]) {
-      return sendReply('<:traverser:1400313375547850877> Please provide a user ID.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Please provide a user ID.');
     }
 
     const userId = args[0];
     const member = message.guild.members.cache.get(userId);
 
     if (!member) {
-      return sendReply('<:traverser:1400313375547850877> User not found in this server.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> User not found in this server.');
     }
 
     const voiceChannel = member.voice?.channel;
 
     if (!voiceChannel) {
-      return sendReply('<:traverser:1400313375547850877> The user is not connected to a voice channel.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> The user is not connected to a voice channel.');
     }
 
     db.get(
@@ -43,11 +43,11 @@ module.exports = {
       (err, row) => {
         if (err) {
           console.error(err);
-          return sendReply('<:traverser:1400313375547850877> A database error occurred.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> A database error occurred.');
         }
 
         if (row) {
-          return sendReply('<:traverser:1400313375547850877> This voice channel is already managed by the bot.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> This voice channel is already managed by the bot.');
         }
 
         db.run(
@@ -56,10 +56,10 @@ module.exports = {
           (insertErr) => {
             if (insertErr) {
               console.error(insertErr);
-              return sendReply('<:traverser:1400313375547850877> Failed to add voice channel to the database.');
+              return sendReply('<:discotoolsxyzicon:1448758684535488562> Failed to add voice channel to the database.');
             }
 
-            return sendReply(`<:verifier:1400313376521064551> Voice channel synced successfully. Owner set to <@${userId}>.`);
+            return sendReply(`<:discotoolsxyzicon1:1448758665963110603> Voice channel synced successfully. Owner set to <@${userId}>.`);
           }
         );
       }

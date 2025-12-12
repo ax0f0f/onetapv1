@@ -14,7 +14,7 @@ module.exports = {
     };
     // Check admin permission
     if (!message.member.permissions.has(PermissionFlagsBits.Administrator)) {
-      return sendReply('❌ You need Administrator permissions to use this command.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You need Administrator permissions to use this command.');
     }
 
     const guildId = message.guild.id;
@@ -24,12 +24,12 @@ module.exports = {
       try {
         role = await message.guild.roles.fetch(args[0]);
       } catch {
-        return sendReply('❌ Invalid role ID or mention.');
+        return sendReply('<:discotoolsxyzicon:1448758684535488562> Invalid role ID or mention.');
       }
     }
 
     if (!role) {
-      return sendReply('❌ Please mention a role or provide a valid role ID.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Please mention a role or provide a valid role ID.');
     }
 
     // Fetch current managers
@@ -40,12 +40,12 @@ module.exports = {
       }
 
       if (!row?.managers) {
-        return sendReply('⚠️ No manager roles are configured yet.');
+        return sendReply('<:warn1:1448792086810726601> No manager roles are configured yet.');
       }
 
       let currentManagers = row.managers.split(',');
       if (!currentManagers.includes(role.id)) {
-        return sendReply('⚠️ This role is not listed as a manager.');
+        return sendReply('<:warn1:1448792086810726601> This role is not listed as a manager.');
       }
 
       // Remove role ID
@@ -57,10 +57,10 @@ module.exports = {
       `, [updatedManagers, guildId], (err2) => {
         if (err2) {
           console.error('DB error on update:', err2);
-          return sendReply('⚠️ Failed to update manager roles in the database.');
+          return sendReply('<:warn1:1448792086810726601> Failed to update manager roles in the database.');
         }
 
-        sendReply(`✅ Role <@&${role.id}> has been removed from managers.`);
+        sendReply(`<:discotoolsxyzicon1:1448758665963110603> Role <@&${role.id}> has been removed from managers.`);
       });
     });
   }

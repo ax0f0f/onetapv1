@@ -16,7 +16,7 @@ module.exports = {
     const guildId = message.guild.id;
 
     if (!args.length) {
-      return sendReply('<:traverser:1400313375547850877> Please provide the new voice channel name.\nUsage: `.v name <new name>`');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Please provide the new voice channel name.\nUsage: `.v name <new name>`');
     }
 
     const newName = args.join(' ').trim();
@@ -24,7 +24,7 @@ module.exports = {
     const voiceChannel = member?.voice?.channel;
 
     if (!voiceChannel) {
-      return sendReply('<:traverser:1400313375547850877> You must be connected to a voice channel to use this command.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be connected to a voice channel to use this command.');
     }
 
     db.get(
@@ -33,11 +33,11 @@ module.exports = {
       (err, row) => {
         if (err) {
           console.error(err);
-          return sendReply('<:traverser:1400313375547850877> Database error occurred.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> Database error occurred.');
         }
 
         if (!row) {
-          return sendReply('<:traverser:1400313375547850877> This voice channel is not managed by the bot or you are not allowed to rename it.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> This voice channel is not managed by the bot or you are not allowed to rename it.');
         }
 
         const channelOwnerId = row.owner_id;
@@ -52,23 +52,23 @@ module.exports = {
           (err2, managerRow) => {
             if (err2) {
               console.error(err2);
-              return sendReply('<:traverser:1400313375547850877> Manager DB query error occurred.');
+              return sendReply('<:discotoolsxyzicon:1448758684535488562> Manager DB query error occurred.');
             }
 
             if (managerRow) {
               return renameVoiceChannel();
             }
 
-            return sendReply('<:traverser:1400313375547850877> You must be the voice channel owner or one of their managers to rename this channel.');
+            return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be the voice channel owner or one of their managers to rename this channel.');
           }
         );
 
         function renameVoiceChannel() {
           voiceChannel.edit({ name: newName }).then(() => {
-            sendReply(`<:verifier:1400313376521064551> Voice channel renamed to \`${newName}\`.`);
+            sendReply(`<:discotoolsxyzicon1:1448758665963110603> Voice channel renamed to \`${newName}\`.`);
           }).catch(error => {
             console.error(error);
-            sendReply('<:traverser:1400313375547850877> Failed to rename the voice channel. Make sure I have permission to manage channels.');
+            sendReply('<:discotoolsxyzicon:1448758684535488562> Failed to rename the voice channel. Make sure I have permission to manage channels.');
           });
         }
       }

@@ -22,12 +22,12 @@ module.exports = {
     };
 
     if (!message.member.permissions.has('ADMINISTRATOR')) {
-      return sendReply('<:traverser:1400313375547850877> You need to be an admin to set the event category!');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You need to be an admin to set the event category!');
     }
 
     const categoryId = args[0];
     if (!categoryId) {
-      return sendReply('<:traverser:1400313375547850877> You need to specify a category ID.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You need to specify a category ID.');
     }
 
     const guildId = message.guild.id;
@@ -40,11 +40,11 @@ module.exports = {
         [guildId, eventName, categoryId]
       );
 
-      const successMessage = `<:verifier:1400313376521064551> **Event Category Set**\nThe event category has been successfully set to <#${categoryId}>.`;
+      const successMessage = `<:discotoolsxyzicon1:1448758665963110603> **Event Category Set**\nThe event category has been successfully set to <#${categoryId}>.`;
       sendReply(successMessage);
     } catch (err) {
-      console.error('<:traverser:1400313375547850877> Event Manager Error:', err.message);
-      return sendReply('<:traverser:1400313375547850877> An error occurred while setting the event category.');
+      console.error('<:discotoolsxyzicon:1448758684535488562> Event Manager Error:', err.message);
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> An error occurred while setting the event category.');
     }
   },
 };

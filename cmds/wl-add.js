@@ -13,16 +13,16 @@ module.exports = {
         });
     };
     if (!args[0]) {
-      return sendReply('<:traverser:1400313375547850877> Please mention a user to whitelist.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Please mention a user to whitelist.');
     }
 
     const userToAdd = message.mentions.users.first();
     if (!userToAdd) {
-      return sendReply('<:traverser:1400313375547850877> Invalid user.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Invalid user.');
     }
 
     if (userToAdd.id === message.author.id) {
-      return sendReply('<:traverser:1400313375547850877> You cannot whitelist yourself.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You cannot whitelist yourself.');
     }
 
     const ownerId = message.author.id;
@@ -35,12 +35,12 @@ module.exports = {
       [ownerId, whitelistedId, guildId],
       (err, blacklistRow) => {
         if (err) {
-          console.error('<:traverser:1400313375547850877> Database error:', err);
-          return sendReply('<:traverser:1400313375547850877> Database error occurred.');
+          console.error('<:discotoolsxyzicon:1448758684535488562> Database error:', err);
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> Database error occurred.');
         }
 
         if (blacklistRow) {
-          return sendReply('<:traverser:1400313375547850877> This user is blacklisted. Remove them from blacklist before whitelisting.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> This user is blacklisted. Remove them from blacklist before whitelisting.');
         }
 
         // Check how many users the author has already whitelisted in this guild
@@ -49,14 +49,14 @@ module.exports = {
           [ownerId, guildId],
           (err2, row) => {
             if (err2) {
-              console.error('<:traverser:1400313375547850877> Database error:', err2);
+              console.error('<:discotoolsxyzicon:1448758684535488562> Database error:', err2);
               return message.reply({
-                embeds: [new EmbedBuilder().setColor('#f5eee2').setDescription('<:traverser:1400313375547850877> Database error occurred.')]
+                embeds: [new EmbedBuilder().setColor('#f5eee2').setDescription('<:discotoolsxyzicon:1448758684535488562> Database error occurred.')]
               });
             }
 
             if (row.count >= 5) {
-              return sendReply('<:traverser:1400313375547850877> You have already whitelisted 5 users. Remove some before adding more.');
+              return sendReply('<:discotoolsxyzicon:1448758684535488562> You have already whitelisted 5 users. Remove some before adding more.');
             }
 
             // Check if user is already whitelisted
@@ -65,14 +65,14 @@ module.exports = {
               [ownerId, whitelistedId, guildId],
               (err3, exists) => {
                 if (err3) {
-                  console.error('<:traverser:1400313375547850877> Database error:', err3);
+                  console.error('<:discotoolsxyzicon:1448758684535488562> Database error:', err3);
                   return message.reply({
-                    embeds: [new EmbedBuilder().setColor('#f5eee2').setDescription('<:traverser:1400313375547850877> Database error occurred.')]
+                    embeds: [new EmbedBuilder().setColor('#f5eee2').setDescription('<:discotoolsxyzicon:1448758684535488562> Database error occurred.')]
                   });
                 }
 
                 if (exists) {
-                  return sendReply('<:traverser:1400313375547850877> This user is already whitelisted by you.');
+                  return sendReply('<:discotoolsxyzicon:1448758684535488562> This user is already whitelisted by you.');
                 }
 
                 // Insert the new whitelist entry
@@ -81,11 +81,11 @@ module.exports = {
                   [ownerId, whitelistedId, guildId],
                   (err4) => {
                     if (err4) {
-                      console.error('<:traverser:1400313375547850877> Database error:', err4);
-                      return sendReply('<:traverser:1400313375547850877> Database error occurred while adding whitelist.');
+                      console.error('<:discotoolsxyzicon:1448758684535488562> Database error:', err4);
+                      return sendReply('<:discotoolsxyzicon:1448758684535488562> Database error occurred while adding whitelist.');
                     }
 
-                    sendReply(`<:verifier:1400313376521064551> Successfully whitelisted ${userToAdd.tag}.`);
+                    sendReply(`<:discotoolsxyzicon1:1448758665963110603> Successfully whitelisted ${userToAdd.tag}.`);
                   }
                 );
               }

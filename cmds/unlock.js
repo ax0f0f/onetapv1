@@ -21,7 +21,7 @@ module.exports = {
     const voiceChannel = member?.voice?.channel;
 
     if (!voiceChannel) {
-      return sendMessage('<:traverser:1400313375547850877> You must be connected to a voice channel to use this command.');
+      return sendMessage('<:discotoolsxyzicon:1448758684535488562> You must be connected to a voice channel to use this command.');
     }
 
     db.get(
@@ -30,11 +30,11 @@ module.exports = {
       async (err, row) => {
         if (err) {
           console.error(err);
-          return sendMessage('<:traverser:1400313375547850877> Database error occurred.');
+          return sendMessage('<:discotoolsxyzicon:1448758684535488562> Database error occurred.');
         }
 
         if (!row) {
-          return sendMessage('<:traverser:1400313375547850877> This voice channel is not managed by the bot or you are not allowed to unlock it.');
+          return sendMessage('<:discotoolsxyzicon:1448758684535488562> This voice channel is not managed by the bot or you are not allowed to unlock it.');
         }
 
         const ownerId = row.owner_id;
@@ -44,12 +44,12 @@ module.exports = {
           return unlockChannel();
         }
 
-        return sendMessage('<:traverser:1400313375547850877> You must be the voice channel owner or their manager to unlock this channel.');
+        return sendMessage('<:discotoolsxyzicon:1448758684535488562> You must be the voice channel owner or their manager to unlock this channel.');
 
         async function unlockChannel() {
           try {
             // Remove lock emoji prefix from channel name if exists
-            if (voiceChannel.name.startsWith('🔒 ')) {
+            if (voiceChannel.name.startsWith('.')) {
               await voiceChannel.setName(voiceChannel.name.slice(2)); // Remove the "🔒 " prefix
             }
 
@@ -58,10 +58,10 @@ module.exports = {
               Connect: null
             });
 
-            return sendMessage('<:accesrefuse:1400312914845634653> Channel has been unlocked for everyone.');
+            return sendMessage('<:accesrefuse:1448781645833568287> Channel has been unlocked <:controledacces:1448781573985009826> for everyone.');
           } catch (error) {
             console.error(error);
-            return sendMessage('<:traverser:1400313375547850877> Failed to unlock the channel. Ensure I have permission to manage channel permissions.');
+            return sendMessage('<:discotoolsxyzicon:1448758684535488562> Failed to unlock the channel. Ensure I have permission to manage channel permissions.');
           }
         }
       }

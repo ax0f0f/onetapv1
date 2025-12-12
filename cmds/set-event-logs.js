@@ -22,12 +22,12 @@ module.exports = {
     };
 
     if (!message.member.permissions.has('ADMINISTRATOR')) {
-      return sendReply('<:traverser:1400313375547850877> You need to be an admin to set the event logs channel!');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You need to be an admin to set the event logs channel!');
     }
 
     const channelId = args[0];
     if (!channelId || isNaN(channelId)) {
-      return sendReply('<:traverser:1400313375547850877> Please provide a valid channel ID.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Please provide a valid channel ID.');
     }
 
     const guildId = message.guild.id;
@@ -38,8 +38,8 @@ module.exports = {
         [guildId],
         (err, row) => {
           if (err) {
-            console.error('<:traverser:1400313375547850877> DB Error:', err.message);
-            return sendReply('<:traverser:1400313375547850877> Database error occurred.');
+            console.error('<:discotoolsxyzicon:1448758684535488562> DB Error:', err.message);
+            return sendReply('<:discotoolsxyzicon:1448758684535488562> Database error occurred.');
           }
 
           const query = row
@@ -52,18 +52,18 @@ module.exports = {
 
           configDB.run(query, params, (err) => {
             if (err) {
-              console.error('<:traverser:1400313375547850877> Failed to save log channel:', err.message);
-              return sendReply('<:traverser:1400313375547850877> An error occurred while saving the event logs channel.');
+              console.error('<:discotoolsxyzicon:1448758684535488562> Failed to save log channel:', err.message);
+              return sendReply('<:discotoolsxyzicon:1448758684535488562> An error occurred while saving the event logs channel.');
             }
 
-            const successMessage = `<:verifier:1400313376521064551> **Event Logs Set**\nThe event logs channel has been set to <#${channelId}>.`;
+            const successMessage = `<:discotoolsxyzicon1:1448758665963110603> **Event Logs Set**\nThe event logs channel has been set to <#${channelId}>.`;
             sendReply(successMessage);
           });
         }
       );
     } catch (err) {
-      console.error('<:traverser:1400313375547850877> Event Manager Error:', err.message);
-      return sendReply('<:traverser:1400313375547850877> An error occurred while setting the event logs channel.');
+      console.error('<:discotoolsxyzicon:1448758684535488562> Event Manager Error:', err.message);
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> An error occurred while setting the event logs channel.');
     }
   },
 };

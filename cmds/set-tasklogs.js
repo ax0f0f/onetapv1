@@ -14,7 +14,7 @@ module.exports = {
     };
 
     if (!message.member.permissions.has(PermissionFlagsBits.Administrator)) {
-      return sendReply('❌ You need Administrator permissions to use this command.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You need Administrator permissions to use this command.');
     }
 
     const guildId = message.guild.id;
@@ -24,12 +24,12 @@ module.exports = {
       try {
         channel = await message.guild.channels.fetch(args[0]);
       } catch {
-        return sendReply('❌ Invalid channel ID or mention.');
+        return sendReply('<:discotoolsxyzicon:1448758684535488562> Invalid channel ID or mention.');
       }
     }
 
     if (!channel) {
-      return sendReply('❌ Please mention a channel or provide its ID.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Please mention a channel or provide its ID.');
     }
 
     db.run(`
@@ -42,7 +42,7 @@ module.exports = {
         return sendReply('⚠️ Something went wrong while saving to the database.');
       }
 
-      sendReply(`✅ Task log channel has been set to <#${channel.id}>.`);
+      sendReply(`<:discotoolsxyzicon1:1448758665963110603> Task log channel has been set to <#${channel.id}>.`);
     });
   }
 };

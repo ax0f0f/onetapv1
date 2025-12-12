@@ -18,7 +18,7 @@ module.exports = {
     const voiceChannel = member?.voice?.channel;
 
     if (!voiceChannel) {
-      return sendReply('<:traverser:1400313375547850877> You must be in a voice channel to use this command.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be in a voice channel to use this command.');
     }
 
     db.get(
@@ -27,11 +27,11 @@ module.exports = {
       (err, row) => {
         if (err) {
           console.error(err);
-          return sendReply('<:traverser:1400313375547850877> Database error occurred.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> Database error occurred.');
         }
 
         if (!row) {
-          return sendReply('<:traverser:1400313375547850877> This voice channel is not managed by the bot or you are not allowed to modify it.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> This voice channel is not managed by the bot or you are not allowed to modify it.');
         }
 
         const channelOwnerId = row.owner_id;
@@ -46,14 +46,14 @@ module.exports = {
           (err2, managerRow) => {
             if (err2) {
               console.error(err2);
-              return sendReply('<:traverser:1400313375547850877> Manager DB error occurred.');
+              return sendReply('<:discotoolsxyzicon:1448758684535488562> Manager DB error occurred.');
             }
 
             if (managerRow) {
               return enableSoundboard();
             }
 
-            return sendReply('<:traverser:1400313375547850877> You must be the channel owner or a manager to enable soundboard for everyone.');
+            return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be the channel owner or a manager to enable soundboard for everyone.');
           }
         );
 
@@ -63,10 +63,10 @@ module.exports = {
               [PermissionsBitField.Flags.UseSoundboard]: true,
             });
 
-            return sendReply('<:arcadiasbon:1384183874405273681> Enabled **Use Soundboard** permission for everyone in this voice channel.');
+            return sendReply('<:arcadiasbon:1448781948196753609> Enabled **Use Soundboard** permission for everyone in this voice channel.');
           } catch (err) {
             console.error("Permission edit failed:", err);
-            return sendReply('<:traverser:1400313375547850877> Failed to update permissions.');
+            return sendReply('<:discotoolsxyzicon:1448758684535488562> Failed to update permissions.');
           }
         }
       }

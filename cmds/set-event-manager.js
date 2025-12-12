@@ -22,18 +22,18 @@ module.exports = {
     };
 
     if (!message.member.permissions.has('ADMINISTRATOR')) {
-      return sendReply('<:traverser:1400313375547850877> You need to be an admin to set the event manager!');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You need to be an admin to set the event manager!');
     }
 
     if (!args.length) {
-      return sendReply('<:traverser:1400313375547850877> Please mention a role or provide a valid role ID.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Please mention a role or provide a valid role ID.');
     }
 
     const input = args[0];
     const role = message.mentions.roles.first() || message.guild.roles.cache.get(input);
 
     if (!role) {
-      return sendReply('<:traverser:1400313375547850877> Could not find a valid role by mention or ID.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Could not find a valid role by mention or ID.');
     }
 
     const guildId = message.guild.id;
@@ -44,8 +44,8 @@ module.exports = {
         [guildId],
         (err, row) => {
           if (err) {
-            console.error('<:traverser:1400313375547850877> DB Error:', err.message);
-            return sendReply('<:traverser:1400313375547850877> Database error occurred.');
+            console.error('<:discotoolsxyzicon:1448758684535488562> DB Error:', err.message);
+            return sendReply('<:discotoolsxyzicon:1448758684535488562> Database error occurred.');
           }
 
           const query = row
@@ -58,18 +58,18 @@ module.exports = {
 
           configDB.run(query, params, (err) => {
             if (err) {
-              console.error('<:traverser:1400313375547850877> Failed to set event manager role:', err.message);
-              return sendReply('<:traverser:1400313375547850877> An error occurred while saving the event manager role.');
+              console.error('<:discotoolsxyzicon:1448758684535488562> Failed to set event manager role:', err.message);
+              return sendReply('<:discotoolsxyzicon:1448758684535488562> An error occurred while saving the event manager role.');
             }
 
-            const successMessage = `<:verifier:1400313376521064551> **Event Manager Role Set**\nThe event manager role has been set to **${role.name}**.`;
+            const successMessage = `<:discotoolsxyzicon1:1448758665963110603> **Event Manager Role Set**\nThe event manager role has been set to **${role.name}**.`;
             sendReply(successMessage);
           });
         }
       );
     } catch (err) {
-      console.error('<:traverser:1400313375547850877> Event Manager Error:', err.message);
-      return sendReply('<:traverser:1400313375547850877> An error occurred while setting the event manager role.');
+      console.error('<:discotoolsxyzicon:1448758684535488562> Event Manager Error:', err.message);
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> An error occurred while setting the event manager role.');
     }
   },
 };

@@ -17,7 +17,7 @@ module.exports = {
 
     const voiceChannel = message.member.voice.channel;
     if (!voiceChannel) {
-      return sendReply('<:traverser:1400313375547850877> You must be connected to a voice channel to use this command.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be connected to a voice channel to use this command.');
     }
 
     db.get(
@@ -26,21 +26,21 @@ module.exports = {
       (err, row) => {
         if (err) {
           console.error(err);
-          return sendReply('<:traverser:1400313375547850877> A database error occurred. Please try again later.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> A database error occurred. Please try again later.');
         }
 
         if (!row) {
-          return sendReply('<:traverser:1400313375547850877> This voice channel is not managed by the bot.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> This voice channel is not managed by the bot.');
         }
 
         const ownerId = row.owner_id;
         const ownerMember = message.guild.members.cache.get(ownerId);
 
         if (!ownerMember) {
-          return sendReply('⚠️ The owner of this voice channel is no longer in the server.');
+          return sendReply('<:warn1:1448792086810726601> The owner of this voice channel is no longer in the server.');
         }
 
-        sendReply(`<:couronne1Copy:1400312921698861076> **Voice Channel Owner:** <@${ownerMember.id}>`);
+        sendReply(`<:couronne1Copy:1448781704000180315> **Voice Channel Owner:** <@${ownerMember.id}>`);
       }
     );
   },

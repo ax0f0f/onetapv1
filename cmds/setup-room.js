@@ -13,23 +13,23 @@ module.exports = {
     };
 
     if (!message.member.permissions.has('Administrator')) {
-      return sendReply("🚫 You need **Administrator** permission to use this command.");
+      return sendReply("<:warn1:1448792086810726601> You need **Administrator** permission to use this command.");
     }
 
     const channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[0]);
 
     if (!channel) {
-      return sendReply("<:traverser:1400313375547850877> Please specify a valid voice channel.\n\n**Usage:** `.v setup-room <channel>`");
+      return sendReply("<:discotoolsxyzicon:1448758684535488562> Please specify a valid voice channel.\n\n**Usage:** `.v setup-room <channel>`");
     }
 
     if (channel.type !== ChannelType.GuildVoice) {
-      return sendReply("⚠️ The specified channel must be a **voice channel**.");
+      return sendReply("<:warn1:1448792086810726601> The specified channel must be a **voice channel**.");
     }
 
     db.get(`SELECT * FROM guild_config WHERE guild_id = ?`, [message.guild.id], (err, row) => {
       if (err) {
         console.error(err);
-        return sendReply("<:traverser:1400313375547850877> Failed to access configuration.");
+        return sendReply("<:discotoolsxyzicon:1448758684535488562> Failed to access configuration.");
       }
 
       const isUpdate = !!row;
@@ -41,10 +41,10 @@ module.exports = {
       db.run(query, [channel.id, message.guild.id], (err) => {
         if (err) {
           console.error(err);
-          return sendReply("<:traverser:1400313375547850877> Failed to save configuration.");
+          return sendReply("<:discotoolsxyzicon:1448758684535488562> Failed to save configuration.");
         }
 
-        const successMessage = `${isUpdate ? '🔁' : '<:verifier:1400313376521064551>'} ${isUpdate ? 'Updated' : 'Setup complete'}.\n\nUsers who join ${channel} will now trigger temp room creation.`;
+        const successMessage = `${isUpdate ? '' : '<:discotoolsxyzicon1:1448758665963110603>'} ${isUpdate ? 'Updated' : 'Setup complete'}.\n\nUsers who join ${channel} will now trigger temp room creation.`;
         sendReply(successMessage);
       });
     });

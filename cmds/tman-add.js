@@ -14,7 +14,7 @@ module.exports = {
     };
     // Check admin permission
     if (!message.member.permissions.has(PermissionFlagsBits.Administrator)) {
-      return sendReply('❌ You need Administrator permissions to use this command.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You need Administrator permissions to use this command.');
     }
 
     const guildId = message.guild.id;
@@ -24,12 +24,12 @@ module.exports = {
       try {
         role = await message.guild.roles.fetch(args[0]);
       } catch {
-        return sendReply('❌ Invalid role ID or mention.');
+        return sendReply('<:discotoolsxyzicon:1448758684535488562> Invalid role ID or mention.');
       }
     }
 
     if (!role) {
-      return sendReply('❌ Please mention a role or provide a valid role ID.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Please mention a role or provide a valid role ID.');
     }
 
     // Get current managers
@@ -43,7 +43,7 @@ module.exports = {
       if (row?.managers) {
         currentManagers = row.managers.split(',');
         if (currentManagers.includes(role.id)) {
-          return sendReply('⚠️ This role is already a manager.');
+          return sendReply('<:warn1:1448792086810726601> This role is already a manager.');
         }
       }
 
@@ -60,7 +60,7 @@ module.exports = {
           return sendReply('⚠️ Failed to update manager roles in the database.');
         }
 
-        sendReply(`✅ Role <@&${role.id}> has been added as a task manager.`);
+        sendReply(`<:discotoolsxyzicon1:1448758665963110603> Role <@&${role.id}> has been added as a task manager.`);
       });
     });
   }

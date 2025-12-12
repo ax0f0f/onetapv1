@@ -18,7 +18,7 @@ module.exports = {
     const author = message.member;
 
     if (!args[0]) {
-      return sendReply('<:traverser:1400313375547850877> Please provide a user or role ID or mention.\nUsage: `.v permit <user or role>`');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> Please provide a user or role ID or mention.\nUsage: `.v permit <user or role>`');
     }
 
     const inputId = args[0].replace(/[<@!&#>]/g, '');
@@ -26,12 +26,12 @@ module.exports = {
     const targetRole = guild.roles.cache.get(inputId);
 
     if (!targetMember && !targetRole) {
-      return sendReply('<:traverser:1400313375547850877> User or Role not found in this server.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> User or Role not found in this server.');
     }
 
     const voiceChannel = author.voice.channel;
     if (!voiceChannel) {
-      return sendReply('<:traverser:1400313375547850877> You need to be connected to your voice channel to use this command.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You need to be connected to your voice channel to use this command.');
     }
 
     const guildId = guild.id;
@@ -43,17 +43,17 @@ module.exports = {
       async (err, row) => {
         if (err) {
           console.error(err);
-          return sendReply('<:traverser:1400313375547850877> Database error occurred. Try again later.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> Database error occurred. Try again later.');
         }
 
         if (!row) {
-          return sendReply('<:traverser:1400313375547850877> This voice channel is not managed by the bot.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> This voice channel is not managed by the bot.');
         }
 
         const ownerId = row.owner_id;
 
         if (author.id !== ownerId && !(await isManagerOf(ownerId, author.id, db))) {
-          return sendReply('<:traverser:1400313375547850877> You must be the voice owner or a manager to use this command.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be the voice owner or a manager to use this command.');
         }
 
         try {
@@ -82,10 +82,10 @@ module.exports = {
             });
           }
 
-          return sendReply(`<:verifier:1400313376521064551> Successfully permitted ${overwriteTarget} .`);
+          return sendReply(`<:discotoolsxyzicon1:1448758665963110603> Successfully permitted ${overwriteTarget} .`);
         } catch (error) {
           console.error('Permission overwrite error:', error);
-          return sendReply('<:traverser:1400313375547850877> Failed to update permissions. Make sure I have the necessary permissions.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> Failed to update permissions. Make sure I have the necessary permissions.');
         }
       }
     );

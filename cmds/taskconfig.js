@@ -33,10 +33,10 @@ module.exports = {
         ? row.taskers.split(',').map(id => `<@&${id}>`).join(', ')
         : 'None';
 
-      const configMessage = `**📝 Task Configuration for \`${message.guild.name}\`**\n\n`
+      const configMessage = `**<:acadiarename:1448781911735402498> Task Configuration for \`${message.guild.name}\`**\n\n`
           + `**Task Log Channel:** ${tasklogChannel}\n`
-          + `**👑 Managers:** ${managerRoles}\n`
-          + `**👷 Taskers:** ${taskerRoles}`;
+          + `**<:couronne1Copy:1448781704000180315> Managers:** ${managerRoles}\n`
+          + `**<:discotoolsxyzicon12:1448796340413792417> Taskers:** ${taskerRoles}`;
 
       sendReply(configMessage);
     });
