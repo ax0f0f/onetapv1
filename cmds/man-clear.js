@@ -27,7 +27,7 @@ module.exports = {
     `, async (err) => {
       if (err) {
         console.error(err);
-        return sendReply('<:arcadiafalse:1381422467251306496> Database error occurred.');
+        return sendReply('<:discotoolsxyzicon:1448758684535488562> Database error occurred.');
       }
 
       const row = new ActionRowBuilder().addComponents(
@@ -41,7 +41,7 @@ module.exports = {
           .setStyle(ButtonStyle.Secondary)
       );
 
-      const confirmationMessage = await message.channel.send(createComponentReply('⚠️ Are you sure you want to clear **your** manager list? This action **cannot** be undone.', [row]));
+      const confirmationMessage = await message.channel.send(createComponentReply('<:warn1:1448792086810726601> Are you sure you want to clear **your** manager list? This action **cannot** be undone.', [row]));
 
       const filter = (interaction) => {
         return (
@@ -61,17 +61,17 @@ module.exports = {
           db.run(`DELETE FROM user_managers WHERE owner_id = ?`, [message.author.id], function (err) {
             if (err) {
               console.error(err);
-              interaction.update(createComponentReply('<:arcadiafalse:1381422467251306496> Failed to clear your managers due to database error.', []));
+              interaction.update(createComponentReply('<:discotoolsxyzicon:1448758684535488562> Failed to clear your managers due to database error.', []));
               return;
             }
 
-            interaction.update(createComponentReply('<:arcadiatrue:1381421969055944707> All your managers have been cleared.', []));
+            interaction.update(createComponentReply('<:discotoolsxyzicon1:1448758665963110603> All your managers have been cleared.', []));
           });
         } else {
-          interaction.update(createComponentReply('❎ Manager clear canceled.', []));
+          interaction.update(createComponentReply('<:discotoolsxyzicon:1448758684535488562> Manager clear canceled.', []));
         }
       } catch {
-        confirmationMessage.edit(createComponentReply('⌛ Time expired. Manager clear canceled.', []));
+        confirmationMessage.edit(createComponentReply('<:time1:1448795572902428715> Time expired. Manager clear canceled.', []));
       }
     });
   }
