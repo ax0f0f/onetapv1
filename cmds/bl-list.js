@@ -27,12 +27,12 @@ module.exports = {
         }
 
         if (!rows.length) {
-          return sendReply('ℹ️ You have not blacklisted any users yet.');
+          return sendReply('<:infoo:1448793556394442793> You have not blacklisted any users yet.');
         }
 
         const userList = rows.map(r => `<@${r.blacklisted_id}>`).join('\n');
 
-        sendReply(`📋 Your blacklisted users:\n${userList}`);
+        sendReply(`<:acadiarename:1448781911735402498> Your blacklisted users:\n${userList}`);
       }
     );
   }
