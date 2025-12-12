@@ -21,7 +21,7 @@ module.exports = {
     const voiceChannel = member.voice.channel;
 
     if (!voiceChannel) {
-      return sendReply('❌ You must be in a voice channel to use this command.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be in a voice channel to use this command.');
     }
 
     const guildId = guild.id;
@@ -68,14 +68,14 @@ module.exports = {
         }
 
         const replyContent = [
-          `**🔍 Info for: ${voiceChannel.name}**`,
-          `**<:couronne1Copy:1400312921698861076> Owner:** ${ownerMention}`,
-          `**📎 Channel ID:** \`${voiceChannelId}\``,
+          `**<:info:1448785612743377007> Info for: ${voiceChannel.name}**`,
+          `**<:couronne1Copy:1448781704000180315> Owner:** ${ownerMention}`,
+          `**<:id1:1448786549285195877> Channel ID:** \`${voiceChannelId}\``,
           ' ',
-          `**<:ajoutdutilisateur:1400312916263178283> Members in voice:**`,
+          `**<:ajoutdutilisateur:1448781790444650707> Members in voice:**`,
           connectedMembers.length > 0 ? connectedMembers.join('\n') : '*None*',
           ' ',
-          `**<:supprimerlutilisateur:1400312929156464660> Rejected Members:**`,
+          `**<:supprimerlutilisateur:1448781831074873507> Rejected Members:**`,
           deniedMembers.length > 0 ? deniedMembers.join('\n') : '*None*'
         ].join('\n');
 
