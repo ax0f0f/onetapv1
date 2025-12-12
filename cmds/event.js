@@ -19,7 +19,7 @@ module.exports = {
     const voiceChannel = member?.voice?.channel;
 
     if (!voiceChannel) {
-      return sendReply('<:traverser:1400313375547850877> You must be connected to a voice channel to use this command.');
+      return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be connected to a voice channel to use this command.');
     }
 
     configDB.get(
@@ -28,11 +28,11 @@ module.exports = {
       async (err, row) => {
         if (err) {
           console.error(err);
-          return sendReply('<:traverser:1400313375547850877> Database error occurred while fetching event data.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> Database error occurred while fetching event data.');
         }
 
         if (!row) {
-          return sendReply('<:traverser:1400313375547850877> No event data found for this server.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> No event data found for this server.');
         }
 
         const eventRole = String(row.event_role);
@@ -40,7 +40,7 @@ module.exports = {
         const eventLogChannelId = row.event_channel;
 
         if (!eventCategoryId || isNaN(eventCategoryId)) {
-          return sendReply('<:traverser:1400313375547850877> Invalid event category ID in the database.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> Invalid event category ID in the database.');
         }
 
         try {
@@ -61,13 +61,13 @@ module.exports = {
           const isAdmin = member.permissions.has(PermissionsBitField.Flags.Administrator);
 
           if (!isOwner || (!isEventManager && !isAdmin)) {
-            return sendReply('<:traverser:1400313375547850877> You must be the voice channel owner **and** either an event manager or have admin permissions.');
+            return sendReply('<:discotoolsxyzicon:1448758684535488562> You must be the voice channel owner **and** either an event manager or have admin permissions.');
           }
 
           const eventCategory = await message.guild.channels.fetch(eventCategoryId);
           if (!eventCategory || eventCategory.type !== 4) {
-            console.error(`<:traverser:1400313375547850877> Invalid category type: ${eventCategory?.type}`);
-            return sendReply('<:traverser:1400313375547850877> Invalid or missing event category.');
+            console.error(`<:discotoolsxyzicon:1448758684535488562> Invalid category type: ${eventCategory?.type}`);
+            return sendReply('<:discotoolsxyzicon:1448758684535488562> Invalid or missing event category.');
           }
 
           await voiceChannel.setParent(eventCategoryId);
@@ -76,7 +76,7 @@ module.exports = {
           });
 
           const replyContent = [
-            `**<:verifier:1400313376521064551> Event Channel Updated**`,
+            `**<:discotoolsxyzicon1:1448758665963110603> Event Channel Updated**`,
             'The voice channel has been moved to the event category and speak permissions have been disabled.',
             `**Event Category:** ${eventCategory.name}`,
             `**Speak Permissions:** Disabled for everyone`,
@@ -111,7 +111,7 @@ module.exports = {
 
         } catch (error) {
           console.error('Failed to update event:', error.message);
-          return sendReply('<:traverser:1400313375547850877> Failed to update the event channel.');
+          return sendReply('<:discotoolsxyzicon:1448758684535488562> Failed to update the event channel.');
         }
       }
     );
